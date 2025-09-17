@@ -1,0 +1,96 @@
+//HazardReport
+
+{
+  "name": "HazardReport",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Brief title of the hazard report"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the hazard"
+    },
+    "hazard_type": {
+      "type": "string",
+      "enum": [
+        "tsunami",
+        "storm_surge",
+        "high_waves",
+        "coastal_flooding",
+        "erosion",
+        "abnormal_sea_behavior",
+        "other"
+      ],
+      "description": "Type of coastal hazard"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "high",
+        "critical"
+      ],
+      "default": "moderate",
+      "description": "Perceived severity level"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "GPS latitude coordinate"
+    },
+    "longitude": {
+      "type": "number",
+      "description": "GPS longitude coordinate"
+    },
+    "location_name": {
+      "type": "string",
+      "description": "Human readable location name"
+    },
+    "media_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "URLs of uploaded photos/videos"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "verified",
+        "dismissed",
+        "escalated"
+      ],
+      "default": "pending",
+      "description": "Verification status by authorities"
+    },
+    "verified_by": {
+      "type": "string",
+      "description": "Email of official who verified"
+    },
+    "urgency_score": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "AI-calculated urgency score"
+    },
+    "social_media_mentions": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of related social media mentions"
+    },
+    "is_public": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether report is visible to public"
+    }
+  },
+  "required": [
+    "title",
+    "hazard_type",
+    "latitude",
+    "longitude"
+  ]
+}
